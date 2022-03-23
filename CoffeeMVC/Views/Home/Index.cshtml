@@ -2,7 +2,385 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://storagevik.blob.core.windows.net/cafecontainer/FotoPerfil.jpg" class="card-img cover-photo" alt="Profile Photo">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="author-img"></div>
+                    </div>
+                    <a asp-controller="" asp-action="Index" class="card-text">Profile Information</a>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="#" class="social social-facebook text-facebook">
+                        <svg viewBox="0 0 16 16" width="30%" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" /></svg>
+                    </a>
+                    <a href="#" class="social social-twitter">
+                        <svg viewBox="0 0 16 16" width="30%" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" /></svg>
+                    </a>
+                    <a href="#" class="social social-instagram">
+                        <svg viewBox="0 0 16 16" width="30%" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8 0C5.827 0 5.555.01 4.702.048 3.85.088 3.27.222 2.76.42c-.526.204-.973.478-1.417.923-.445.444-.72.89-.923 1.417-.198.51-.333 1.09-.372 1.942C.008 5.555 0 5.827 0 8s.01 2.445.048 3.298c.04.852.174 1.433.372 1.942.204.526.478.973.923 1.417.444.445.89.72 1.417.923.51.198 1.09.333 1.942.372.853.04 1.125.048 3.298.048s2.445-.01 3.298-.048c.852-.04 1.433-.174 1.942-.372.526-.204.973-.478 1.417-.923.445-.444.72-.89.923-1.417.198-.51.333-1.09.372-1.942.04-.853.048-1.125.048-3.298s-.01-2.445-.048-3.298c-.04-.852-.174-1.433-.372-1.942-.204-.526-.478-.973-.923-1.417-.444-.445-.89-.72-1.417-.923-.51-.198-1.09-.333-1.942-.372C10.445.008 10.173 0 8 0zm0 1.44c2.136 0 2.39.01 3.233.048.78.036 1.203.166 1.485.276.374.145.64.318.92.598.28.28.453.546.598.92.11.282.24.705.276 1.485.038.844.047 1.097.047 3.233s-.01 2.39-.05 3.233c-.04.78-.17 1.203-.28 1.485-.15.374-.32.64-.6.92-.28.28-.55.453-.92.598-.28.11-.71.24-1.49.276-.85.038-1.1.047-3.24.047s-2.39-.01-3.24-.05c-.78-.04-1.21-.17-1.49-.28-.38-.15-.64-.32-.92-.6-.28-.28-.46-.55-.6-.92-.11-.28-.24-.71-.28-1.49-.03-.84-.04-1.1-.04-3.23s.01-2.39.04-3.24c.04-.78.17-1.21.28-1.49.14-.38.32-.64.6-.92.28-.28.54-.46.92-.6.28-.11.7-.24 1.48-.28.85-.03 1.1-.04 3.24-.04zm0 2.452c-2.27 0-4.108 1.84-4.108 4.108 0 2.27 1.84 4.108 4.108 4.108 2.27 0 4.108-1.84 4.108-4.108 0-2.27-1.84-4.108-4.108-4.108zm0 6.775c-1.473 0-2.667-1.194-2.667-2.667 0-1.473 1.194-2.667 2.667-2.667 1.473 0 2.667 1.194 2.667 2.667 0 1.473-1.194 2.667-2.667 2.667zm5.23-6.937c0 .53-.43.96-.96.96s-.96-.43-.96-.96.43-.96.96-.96.96.43.96.96z" /></svg>
+                    </a>
+                </div>
+            </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Album de fotos</h4>
+                        </div>
+                        <div class="p-2">
+                            <div class="row px-2">
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://cf.shopee.com.br/file/597803dd5fed316981e7182a3aec6bf2" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://images.squarespace-cdn.com/content/v1/58ecd80b725e25240edc0606/1619118953644-7LRF3EL7NVWTYH9014TV/americano.JPG?format=1000w" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row px-2">
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://cdn.awsli.com.br/1000x1000/1897/1897136/produto/95854145/a63c6eaf19.jpg" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://cdn.awsli.com.br/1000x1000/385/385145/produto/14689627/c4d50358a0.jpg" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row px-2">
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://cdn.awsli.com.br/1000x1000/2018/2018668/produto/118144647/be9d700c59.jpg" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img src="https://cafeorfeu.vteximg.com.br/arquivos/ids/156099-1000-1000/cafe-orfeuPrensa-Francesa-1L-Mod-Chambord-Prateada-Bodum.png?v=636444717816500000" alt="Recent photo" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="card mb-0">
+                        <textarea name="post" id="post"
+                                  cols="30"
+                                  rows="6"
+                                  class="form-control"
+                                  placeholder="Post your favorite coffee!!">
+                    </textarea>
+                        <div class="p-2">
+
+                            <a asp-controller="Coffees" asp-action="Create" class="btn btn-dark btn-sm float-md-right">
+                                <i class="material-icons md-18 align-middle"> Post </i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="lead my-4 text-center text-muted"><i class="material-icons align-middle">Recents Posts</i></p>
+                    <div class="card card-profile--activity">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+
+                            <h4 class="card-title">Feed</h4>
+                            <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false"></a>
+
+                        </div>
+
+
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <img src="https://www.embrapa.br/image/journal/article?img_id=64284423&t=1629466894784" alt="Person" class="rounded-circle mr-2" width="40">
+                                <div class="media-body">
+                                    <p class="card-text mb-0">
+                                        <a href="profile">Peter</a> added 2 new photos
+                                    </p>
+                                    <p class="card-text text-muted">
+                                        5 mins ago
+                                        <span>-</span> Minas Gerais, BR
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Melhores Cerrado Mineiro!</p>
+                            <div class="row px-2">
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img class="img-fluid" src="https://cafestore.vteximg.com.br/arquivos/ids/158567-1000-1000/CAP-CERRADO.jpg?v=637400342042300000" alt="Card image" data-toggle="tooltip" data-placement="bottom" title="Cerrado Mineiro">
+                                    </a>
+                                </div>
+                                <div class="col-6 p-1">
+                                    <a href="#">
+                                        <img class="img-fluid" src="https://cafestore.vteximg.com.br/arquivos/ids/158571-1000-1000/cerrado-mineiro_tm.jpg?v=637401959274670000" alt="Card image" data-toggle="tooltip" data-placement="bottom" title="Cerrado Mineiro">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-profile--activity">
+                        <div class="media align-items-center">
+                            <img src="https://italianismo.com.br/wp-content/uploads/2018/01/italiano.jpg" alt="Person" class="rounded-circle mr-2" width="40">
+                            <div class="media-body">
+                                <p class="card-text mb-0">
+                                    <a href="profile">John Falcone</a> added a new photo
+                                </p>
+                                <p class="card-text text-muted">
+                                    20 mins ago
+                                    <span>-</span> Italy, IT
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <p>The best way to make a good coffee</p>
+                        <div class="row px-2">
+                            <div class="col-6 p-1">
+                                <a href="#">
+                                    <img class="img-fluid" src="https://carrefourbr.vtexassets.com/arquivos/ids/19682929/Cafeteira-Italiana-9-Xicaras-Diamantada-Moka-Cafe-Expresso-em-Aluminio-NS-1319.jpg?v=637607493786230000" alt="Card image" data-toggle="tooltip" data-placement="bottom" title="Italian Coffe">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-profile--activity">
+                        <div class="media align-items-center">
+                            <img src="https://equilibrioemvida.com/wp-content/uploads/2015/11/2EBB43A600000578-3330236-image-a-6_1448281158147-500x500.jpg" alt="Person" class="rounded-circle mr-2" width="40">
+                            <div class="media-body">
+                                <p class="card-text mb-0">
+                                    <a href="profile">Peter Molnar</a> replied John Falcone's post
+                                </p>
+                                <p class="card-text text-muted">
+                                    23 mins ago
+                                    <span>-</span> Rio de Janeiro, BR
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <p>You loko gringao, nothing beat the best and tracidional way</p>
+                        <div class="row px-2">
+                            <div class="col-6 p-1">
+                                <a href="#">
+                                    <img class="img-fluid" src="https://storage.googleapis.com/facily-images/ec7e5dbc-cafeteira-p-caf%C3%A9-coado-artesanal-c-vidro-super-resistente-4-1569879563.jpg" alt="Card image" data-toggle="tooltip" data-placement="bottom" title="Brasilian Coffe">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-profile--activity">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <img src="https://baristawave.com/wp-content/uploads/2020/06/ThaissaCordeiro.jpeg" alt="Person" class="rounded-circle mr-2" width="40">
+                                <div class="media-body">
+                                    <p class="card-text mb-0">
+                                        <a href="profile">Fernanda Souto</a> added a comment
+                                    </p>
+                                    <p class="card-text text-muted">
+                                        45 mins ago
+                                        <span>-</span> Rio de Janeiro, BR
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card-body lead text-center">
+                                <p class="card-text">
+                                    A linha de cafés especiais da Melita me faz pensar porque os brasileiros tendem a continuar comprando as marcar convencionais de café
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="card-title text-center">Private Chat</div>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Refresh"></a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="https://cdn.mindminers.com/blog/uploads/2021/05/Dani-Almeida_auto_x1.png" class="img-fluid rounded-circle mr-1" width="35" alt="User1">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Ana Clara</a>
+                                        <div>
+                                            <small class="text-muted">active now</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="https://equilibrioemvida.com/wp-content/uploads/2015/11/2EBB43A600000578-3330236-image-a-6_1448281158147-500x500.jpg" class="img-fluid rounded-circle mr-1" width="35" alt="User2">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Peter Molnar</a>
+                                        <div>
+                                            <small class="text-muted">active now</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control" placeholder="Send...">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="https://i0.wp.com/cafeaoleu.com/wp-content/uploads/2021/03/paula-1-500x500.jpg" class="img-fluid rounded-circle mr-1" width="35" alt="User3">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Daniela Ramos</a>
+                                        <div>
+                                            <small class="text-muted">active now</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control" placeholder="Send...">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="https://blog.melhorenvio.com.br/wp-content/uploads/2021/02/Foto-Perfil-Melhor-Envio.png" class="img-fluid rounded-circle mr-1" width="35" alt="User4">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Juliana Lemos</a>
+                                        <div>
+                                            <small class="text-muted">active 7 minutes ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control" placeholder="Send...">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="http://youfashion.com.br/storage/user-images/5e1c7e6a-37fb-4550-8e66-3cea8cbe4a81-72-perfil.jpeg" class="img-fluid rounded-circle mr-1" width="35" alt="User5">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Jessica Balmer</a>
+                                        <div>
+                                            <small class="text-muted">active 26 minutes ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control" placeholder="Send...">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                <div class="media align-items-center">
+                                    <img src="https://www.cafesalomao.com.br/wp-content/uploads/2017/07/produtor-reinaldo.jpg" class="img-fluid rounded-circle mr-1" width="35" alt="User6">
+                                    <div class="media-body lh-1">
+                                        <a href="#">Max Clinton</a>
+                                        <div>
+                                            <small class="text-muted">active 20 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="material-icons align-middle md-18 text-muted">message</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h6 class="dropdown-header">Message</h6>
+                                        <textarea name="post" id="post" cols="30" rows="6" class="form-control" placeholder="Send...">
+
+                                    </textarea>
+                                        <div class="p-2">
+                                            <a asp-controller="Posts" asp-action="Create" class="btn btn-dark btn-sm float-right">
+                                                <i class="material-icons md-18 align-middle">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>

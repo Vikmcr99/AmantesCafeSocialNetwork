@@ -1,6 +1,7 @@
 using CoffeeAPI.Configuration;
 using Core.Models;
 using Data;
+using Data.Blob;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,9 +31,12 @@ namespace CoffeeMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+       
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<IBlobService, BlobService>(provider =>
+                new BlobService(Configuration.GetValue<string>("blobstorage")));
 
             var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
             services.Configure<JwtBearerTokenSettings>(jwtSection);

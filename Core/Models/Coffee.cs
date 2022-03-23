@@ -19,10 +19,6 @@ namespace Core.Models
         [Required]
         public string Region { get; set; }
 
-
-        //[ForeignKey("User")]
-        //public int UserId { get; set; }
-
-        //public User User { get; set; }
+        public List<Coffee_User> CoffeeUsers { get; set; }
     }
 }

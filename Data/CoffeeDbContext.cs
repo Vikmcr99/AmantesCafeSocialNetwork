@@ -14,7 +14,33 @@ namespace Data
     {
         public CoffeeDbContext(DbContextOptions<CoffeeDbContext> options) : base(options) { }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+           
+            
+            builder.Entity<Coffee_User>()
+                .HasOne(c => c.Coffee)
+                .WithMany(cu => cu.CoffeeUsers)
+                .HasForeignKey(ci => ci.CoffeeId);
+
+            builder.Entity<Coffee_User>()
+                .HasOne(c => c.Usercoffee)
+                .WithMany(cu => cu.CoffeeUsers)
+                .HasForeignKey(ci => ci.UserId);
+
+            base.OnModelCreating(builder);
+        }
+
+
+
         public DbSet<Coffee> Coffee { get; set; }
+        public DbSet<Post> Post { get; set; }
+
+        public DbSet<UserCoffee> UserCoffees{ get; set; }
+
+        public DbSet<Coffee_User> Coffee_Users { get; set; }
+
+
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<CoffeeDbContext>

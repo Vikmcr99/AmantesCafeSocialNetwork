@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeMVC.Controllers
 {
-    [Authorize]
     public class CoffeesController : Controller
     {
         private readonly  CoffeeDbContext _context;
