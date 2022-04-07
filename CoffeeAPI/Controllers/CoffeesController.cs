@@ -14,6 +14,7 @@ namespace CoffeeAPI.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class CoffeesController : ControllerBase
     {
         private readonly CoffeeDbContext _context;

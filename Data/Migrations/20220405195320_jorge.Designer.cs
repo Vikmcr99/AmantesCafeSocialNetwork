@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(CoffeeDbContext))]
-    [Migration("20220323205952_ManytoMany")]
-    partial class ManytoMany
+    [Migration("20220405195320_jorge")]
+    partial class jorge
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,12 @@ namespace Data.Migrations
 
                     b.Property<string>("Region")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CoffeeId");

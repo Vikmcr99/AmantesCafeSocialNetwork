@@ -7,120 +7,92 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Models;
 using Data;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using System.Net.Http.Headers;
 
 namespace CoffeeMVC.Controllers
 {
-    //[Authorize]
-    public class CoffeesController : Controller
+    public class MidiaGalleriesController : Controller
     {
-        private readonly  CoffeeDbContext _context;
-        public static string baseUrl = "http://localhost:41259/api/coffees/";
+        private readonly CoffeeDbContext _context;
 
-        public CoffeesController (CoffeeDbContext context)
+        public MidiaGalleriesController(CoffeeDbContext context)
         {
             _context = context;
         }
-        CafeAPI _api = new CafeAPI();
+
+        // GET: MidiaGalleries
         public async Task<IActionResult> Index()
         {
-
-            var products = await GetAll();
-            return View(products);
+            return View(await _context.MidiaGalleries.ToListAsync());
         }
 
-        [HttpGet]
-        public async Task<List<Coffee>> GetAll()
-        {
-            var accessToken = HttpContext.Session.GetString("JWToken");
-            var url = baseUrl;
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string jsonStr = await client.GetStringAsync(url);
-
-            var res = JsonConvert.DeserializeObject<List<Coffee>>(jsonStr).ToList();
-
-            return res;
-
-        }
-
-
-        // GET: Coffees/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        // GET: MidiaGalleries/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var coffee = await _context.Coffee
-                .FirstOrDefaultAsync(m => m.CoffeeId == id);
-            if (coffee == null)
+            var midiaGallery = await _context.MidiaGalleries
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (midiaGallery == null)
             {
                 return NotFound();
             }
 
-            return View(coffee);
+            return View(midiaGallery);
         }
 
-        // GET: Coffees/Create
+        // GET: MidiaGalleries/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Coffees/Create
+        // POST: MidiaGalleries/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CoffeeId,Name,Producer,Description,Region,Url,Image")] Coffee coffee)
+        public async Task<IActionResult> Create([Bind("Id,Url, Image")] MidiaGallery midiaGallery)
         {
-            var image = UploadImage(coffee.Image);
-            
+            var image = UploadImage(midiaGallery.Image);
             if (ModelState.IsValid)
             {
-                coffee.Url = await image;
-                coffee.Username = User.Identity.Name;
-                coffee.CoffeeId = Guid.NewGuid();
-                _context.Add(coffee);
+                midiaGallery.Url = await image;
+                _context.Add(midiaGallery);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(coffee);
+            return View(midiaGallery);
         }
 
-        // GET: Coffees/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        // GET: MidiaGalleries/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var coffee = await _context.Coffee.FindAsync(id);
-            if (coffee == null)
+            var midiaGallery = await _context.MidiaGalleries.FindAsync(id);
+            if (midiaGallery == null)
             {
                 return NotFound();
             }
-            return View(coffee);
+            return View(midiaGallery);
         }
 
-        // POST: Coffees/Edit/5
+        // POST: MidiaGalleries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("CoffeeId,Name,Producer,Description,Region,Image")] Coffee coffee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Url")] MidiaGallery midiaGallery)
         {
-            if (id != coffee.CoffeeId)
+            if (id != midiaGallery.Id)
             {
                 return NotFound();
             }
@@ -129,12 +101,12 @@ namespace CoffeeMVC.Controllers
             {
                 try
                 {
-                    _context.Update(coffee);
+                    _context.Update(midiaGallery);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CoffeeExists(coffee.CoffeeId))
+                    if (!MidiaGalleryExists(midiaGallery.Id))
                     {
                         return NotFound();
                     }
@@ -145,34 +117,34 @@ namespace CoffeeMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(coffee);
+            return View(midiaGallery);
         }
 
-        // GET: Coffees/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        // GET: MidiaGalleries/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var coffee = await _context.Coffee
-                .FirstOrDefaultAsync(m => m.CoffeeId == id);
-            if (coffee == null)
+            var midiaGallery = await _context.MidiaGalleries
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (midiaGallery == null)
             {
                 return NotFound();
             }
 
-            return View(coffee);
+            return View(midiaGallery);
         }
 
-        // POST: Coffees/Delete/5
+        // POST: MidiaGalleries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var coffee = await _context.Coffee.FindAsync(id);
-            _context.Coffee.Remove(coffee);
+            var midiaGallery = await _context.MidiaGalleries.FindAsync(id);
+            _context.MidiaGalleries.Remove(midiaGallery);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -191,14 +163,9 @@ namespace CoffeeMVC.Controllers
             return uri;
         }
 
-        public async Task<IActionResult> Comments()
+        private bool MidiaGalleryExists(int id)
         {
-            return View();
-        }
-
-        private bool CoffeeExists(Guid id)
-        {
-            return _context.Coffee.Any(e => e.CoffeeId == id);
+            return _context.MidiaGalleries.Any(e => e.Id == id);
         }
     }
 }

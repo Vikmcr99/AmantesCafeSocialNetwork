@@ -14,8 +14,9 @@
                 <img src="https://storagevik.blob.core.windows.net/cafecontainer/LogoAmantesCafe.png" alt="logotipo" width=300 height=300 align="right">
             </div>
         </div>
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Username"/>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -35,6 +36,11 @@
                 <label asp-for="Region" class="control-label"></label>
                 <input asp-for="Region" class="form-control" />
                 <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" accept="image/*"/>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-dark" />

@@ -40,7 +40,10 @@ namespace Data
 
         public DbSet<Coffee_User> Coffee_Users { get; set; }
 
+        public DbSet<MidiaGallery> MidiaGalleries { get; set; }
 
+        public virtual DbSet<User> Users { get; set; }
+      
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<CoffeeDbContext>

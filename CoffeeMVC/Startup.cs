@@ -30,44 +30,27 @@ namespace CoffeeMVC
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
-       
-            services.AddControllersWithViews();
+
+
+            services.AddMvc();
+            services.AddControllers();
+            services.AddDbContext<CoffeeDbContext>(options =>
+         options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
+            services.AddIdentity<User, IdentityRole>()
+     .AddEntityFrameworkStores<CoffeeDbContext>().AddDefaultTokenProviders().AddDefaultUI();
+
             services.AddRazorPages();
+            services.AddControllersWithViews()
+ .AddNewtonsoftJson(options =>
+ options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
-            services.AddScoped<IBlobService, BlobService>(provider =>
-                new BlobService(Configuration.GetValue<string>("blobstorage")));
-
-            var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
-            services.Configure<JwtBearerTokenSettings>(jwtSection);
-            var jwtBearerTokenSettings = jwtSection.Get<JwtBearerTokenSettings>();
-            var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
-
-            services.AddAuthentication(options =>
+            services.AddSession(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                    options.RequireHttpsMetadata = false;
-                    options.SaveToken = true;
-                    options.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidateIssuer = true,
-                        ValidIssuer = jwtBearerTokenSettings.Issuer,
-                        ValidateAudience = true,
-                        ValidAudience = jwtBearerTokenSettings.Audience,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
-
-            services.AddDbContext<CoffeeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
-
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<CoffeeDbContext>().AddDefaultTokenProviders().AddDefaultUI();
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,15 +68,17 @@ namespace CoffeeMVC
 
             app.UseRouting();
 
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
             });
         }
     }

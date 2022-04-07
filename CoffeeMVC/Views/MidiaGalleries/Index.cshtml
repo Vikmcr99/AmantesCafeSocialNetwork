@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Core.Models.MidiaGallery>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Add new</a>
+</p>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src =" @Html.DisplayFor(modelItem => item.Url)" width="300" height="300"/>
+            </td>
+        </tr>
+}
+
